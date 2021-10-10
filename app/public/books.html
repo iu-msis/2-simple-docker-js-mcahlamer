@@ -9,6 +9,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
+    <script src="https://unpkg.com/vue@next"></script>
+
     <title>Book List</title>
   </head>
   <body>
@@ -27,6 +29,7 @@
     </nav>
     <h1 class="bright"> <center>Ferb's Favorite Books </h1>
 
+      <div id="booksApp" class="container">
         <table id="myTable" class="table">
             <thead>
               <tr>
@@ -38,53 +41,17 @@
                 <th scope="col">MSRP</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Twilight</th>
-                <td>Stephenie Meyer</td>
-                <td>2005</td>
-                <td>Little, Brown and Company</td>
-                <td>498</td>
-                <td>$9.01</td>
-              </tr>
-              <tr>
-                <th scope="row">New Moon</th>
-                <td>Stephenie Meyer</td>
-                <td>2006</td>
-                <td>Little, Brown and Company</td>
-                <td>563</td>
-                <td>$15.75</td>
-
-              </tr>
-              <tr>
-                <th scope="row">Eclipse</th>
-                <td>Stephenie Meyer</td>
-                <td>2007</td>
-                <td>Little, Brown and Company</td>
-                <td>629</td>
-                <td>$16.99</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Breaking Dawn</th>
-                <td>Stephenie Meyer</td>
-                <td>2008</td>
-                <td>Little, Brown and Company</td>
-                <td>756</td>
-                <td>$13.99</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Midnight Sun</th>
-                <td>Stephenie Meyer</td>
-                <td>2020</td>
-                <td>Little, Brown and Company</td>
-                <td>658</td>
-                <td>$13.32</td>
-              </tr>
-
-            </tbody>
+            <tr v-for= "book in books">
+              <td>{{ book.title }}</td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.pubyear }}</td>
+              <td>{{ book.publisher }}</td>
+              <td>{{ book.pages }}</td>
+              <td>{{ prettyDollar(book.msrp) }}</td>
+            </tr>
+            
           </table>
+      </div>
 
     <script src="js/tablesort.min.js"></script>
       <script>
@@ -141,5 +108,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     -->
     
+    <script src="js/booksindex.js"></script>
+
   </body>
 </html>
