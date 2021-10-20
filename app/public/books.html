@@ -49,9 +49,7 @@
               <td>{{ book.pages }}</td>
               <td>{{ prettyDollar(book.msrp) }}</td>
             </tr>
-            
           </table>
-      </div>
 
     <script src="js/tablesort.min.js"></script>
       <script>
@@ -64,34 +62,41 @@
 
     <h1> <center>Add a New Book</h1>
 
-    <form>
+    <form v-on:submit.prevent="postNewBooks">
         <div class="form-group">
-          <label for="exampleTitle">Title</label>
-          <input type="title" class="form-control" id="exampleTitle" >
+          <label for="Title">Title</label>
+          <input type="title" v-model="booksForm.title"
+          class="form-control" id="title" >
         </div>
         <div class="form-group">
-          <label for="exampleAuthor">Author</label>
-          <input type="author" class="form-control" id="exampleAuthor">
+          <label for="Author">Author</label>
+          <input type="author" v-model="booksForm.author"
+          class="form-control" id="author">
         </div>
         <div class="form-group">
-            <label for="exampleYear">Year Published</label>
-            <input type="year" class="form-control" id="exampleYear">
+            <label for="Year">Year Published</label>
+            <input type="year" v-model="booksForm.pubyear"
+            class="form-control" id="pubyear">
         </div>
           <div class="form-group">
-            <label for="examplePublisher">Publisher</label>
-            <input type="Publisher" class="form-control" id="examplePublisher">
+            <label for="Publisher">Publisher</label>
+            <input type="Publisher" v-model="booksForm.publisher"
+            class="form-control" id="publisher">
           </div>
           <div class="form-group">
-            <label for="examplePage">Page Count</label>
-            <input type="page" class="form-control" id="examplePage">
+            <label for="Page">Page Count</label>
+            <input type="page" v-model="booksForm.pages"
+            class="form-control" id="pages">
           </div>
           <div class="form-group">
-            <label for="exampleMSRP">MSRP</label>
-            <input type="MSRP" class="form-control" id="exampleMSRP">
+            <label for="MSRP">MSRP</label>
+            <input type="MSRP" v-model="booksForm.msrp"
+            class="form-control" id="msrp">
           </div>
         
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+      </div>
 
 
       <!-- got styling from https://getbootstrap.com/docs/4.5/components/forms/
