@@ -41,13 +41,20 @@
                 <th scope="col">MSRP</th>
               </tr>
             </thead>
-            <tr v-for= "book in books">
+            <tr v-for= "book in books" v-on:click="selectBooks(book)"
+            :class="['book', {selected: selectedBook && book.id == selectedBook.id}]">
               <td>{{ book.title }}</td>
               <td>{{ book.author }}</td>
               <td>{{ book.pubyear }}</td>
               <td>{{ book.publisher }}</td>
               <td>{{ book.pages }}</td>
               <td>{{ prettyDollar(book.msrp) }}</td>
+              <td>
+                <button type="button" class="btn btn-outline-secondary btn-sm"
+                  v-on:click="selectBooks(book)">Edit</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm"
+                  v-on:click="postDeleteBooks(book)">Delete</button>
+              </td>
             </tr>
           </table>
 
@@ -62,7 +69,7 @@
 
     <h1> <center>Add a New Book</h1>
 
-    <form v-on:submit.prevent="postNewBooks">
+    <form v-on:submit.prevent="postBooks">
         <div class="form-group">
           <label for="Title">Title</label>
           <input type="title" v-model="booksForm.title"
@@ -93,8 +100,11 @@
             <input type="MSRP" v-model="booksForm.msrp"
             class="form-control" id="msrp">
           </div>
+          <button type="submit" class="btn btn-primary">{{ selectedBooks === null ? "Add" : "Edit" }} Books</button>
+          <button type="button" class="btn btn-outline-secondary" 
+            v-if="selectedBooks"
+            v-on:click="resetBooksForm">Cancel</button>
         
-        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
       </div>
 
